@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import sk.kosickaakademia.illiaspivak.chat.connect.Information;
 import sk.kosickaakademia.illiaspivak.chat.util.Util;
 
 public class Main extends Application {
@@ -19,11 +20,12 @@ public class Main extends Application {
 
 
     public static void main(String[] args) {
+        Util util = new Util();
 //        Database database = new Database();
 //        database.TestConnection();
 //        launch(args);
-        Util util = new Util();
-        String example = "example";
-        System.out.println(util.getMD5(example));
+        System.out.println("Login: " + Information.getLogin());
+        System.out.println("Password: " + Information.getPassword());
+        System.out.println("PasswordMD5: " + util.getMD5(Information.getPassword()));
     }
 }
