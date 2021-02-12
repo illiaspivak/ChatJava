@@ -1,10 +1,12 @@
 package sk.kosickaakademia.illiaspivak.chat;
 
 import sk.kosickaakademia.illiaspivak.chat.connect.Connect;
+import sk.kosickaakademia.illiaspivak.chat.entity.Message;
 import sk.kosickaakademia.illiaspivak.chat.entity.User;
 import sk.kosickaakademia.illiaspivak.chat.util.Util;
 
 import java.sql.*;
+import java.util.List;
 
 public class Database {
     private Connection getConnection() throws ClassNotFoundException, SQLException {
@@ -32,14 +34,14 @@ public class Database {
             return false;
         }
         String PasswordMD5 = new Util().getMD5(password);
-        String addNewUser = "INSERT INTO user (login, password) VALUES (?,?)";
+        String query = "INSERT INTO user (login, password) VALUES (?,?)";
         try {
             Connection connection = getConnection();
             if (connection == null) {
                 System.out.println("Error! No connection");
                 return false;
             }
-            PreparedStatement ps = connection.prepareStatement(addNewUser);
+            PreparedStatement ps = connection.prepareStatement(query);
             ps.setString(1, login);
             ps.setString(2, PasswordMD5);
             int result = ps.executeUpdate();
@@ -67,14 +69,14 @@ public class Database {
             return null;
         }
         String hashPassword = new Util().getMD5(password);
-        String findUser = "Select * FROM user Where login LIKE ? and password LIKE ?";
+        String query = "Select * FROM user Where login LIKE ? and password LIKE ?";
         try {
             Connection con = getConnection();
             if (con == null) {
                 System.out.println("Error! No connection");
                 return null;
             }
-            PreparedStatement ps = con.prepareStatement(findUser);                                                         ;
+            PreparedStatement ps = con.prepareStatement(query);                                                         ;
             ps.setString(1, login);
             ps.setString(2, hashPassword);
             ResultSet rs = ps.executeQuery();
@@ -94,5 +96,28 @@ public class Database {
             ex.printStackTrace();
         }
         return null;
+    }
+
+    public boolean changePassword(String login , String oldPassword, String newPassword){
+        return false;
+    }
+
+    public int getUserId(String login){
+
+        return -1;
+    }
+
+    public boolean sendMessage(int from, String toUser, String text){
+
+        return false;
+    }
+
+    public List<Message> getMyMessages(String login){
+
+        return null;
+    }
+
+    public void deleteAllMyMessages(String login){
+
     }
 }
