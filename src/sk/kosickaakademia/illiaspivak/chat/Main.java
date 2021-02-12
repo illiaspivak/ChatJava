@@ -13,17 +13,16 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 300, 275));
+        primaryStage.setTitle("Chat");
+        primaryStage.setScene(new Scene(root, 356, 226));
         primaryStage.show();
     }
 
 
     public static void main(String[] args) {
-        Util util = new Util();
-        Database database = new Database();
+//        Database database = new Database();
 //        database.TestConnection();
-        database.insertNewUser(Information.getLogin(),Information.getPassword());
+//        database.insertNewUser(Information.getLogin(),Information.getPassword());
         launch(args);
     }
 }
