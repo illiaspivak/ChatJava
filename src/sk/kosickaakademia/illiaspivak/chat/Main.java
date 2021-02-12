@@ -9,6 +9,8 @@ import sk.kosickaakademia.illiaspivak.chat.connect.Information;
 import sk.kosickaakademia.illiaspivak.chat.entity.User;
 import sk.kosickaakademia.illiaspivak.chat.util.Util;
 
+import java.util.List;
+
 public class Main extends Application {
 
     @Override
@@ -22,8 +24,10 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         Database database = new Database();
-        String text = "test";
-        database.sendMessage(database.getUserId(Information.getLogin()),Information.getLogin(),text);
+        List<String> list = database.getUsers();
+        for(String c : list){
+            System.out.println("  - " + c);
+        }
         launch(args);
     }
 }

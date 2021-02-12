@@ -6,6 +6,7 @@ import sk.kosickaakademia.illiaspivak.chat.entity.User;
 import sk.kosickaakademia.illiaspivak.chat.util.Util;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Database {
@@ -204,5 +205,30 @@ public class Database {
 
     public void deleteAllMyMessages(String login){
 
+    }
+
+    /**
+     * Creating a list of chat users
+     * @return
+     */
+    public List<String> getUsers(){
+        ArrayList<String> list = new ArrayList<String>();
+        String query = "SELECT login FROM user; ";
+        try {
+            Connection connection = getConnection();
+            if(connection ==null){
+                System.out.println("Error! No connection");
+                return null;
+            }
+            PreparedStatement ps = connection.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()){
+                list.add(rs.getString("login"));
+            }
+            connection.close();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return list;
     }
 }
