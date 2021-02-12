@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import sk.kosickaakademia.illiaspivak.chat.connect.Information;
+import sk.kosickaakademia.illiaspivak.chat.entity.User;
 import sk.kosickaakademia.illiaspivak.chat.util.Util;
 
 public class Main extends Application {
@@ -20,9 +21,13 @@ public class Main extends Application {
 
 
     public static void main(String[] args) {
-//        Database database = new Database();
+        Database database = new Database();
+        User user = database.loginUser(Information.getLogin(),Information.getPassword());
 //        database.TestConnection();
 //        database.insertNewUser(Information.getLogin(),Information.getPassword());
-        launch(args);
+        System.out.println(user.getId());
+        System.out.println(user.getLogin());
+        System.out.println(user.getPassword());
+//        launch(args);
     }
 }

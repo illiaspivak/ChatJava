@@ -4,10 +4,7 @@ import sk.kosickaakademia.illiaspivak.chat.connect.Connect;
 import sk.kosickaakademia.illiaspivak.chat.entity.User;
 import sk.kosickaakademia.illiaspivak.chat.util.Util;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class Database {
     private Connection getConnection() throws ClassNotFoundException, SQLException {
@@ -61,7 +58,41 @@ public class Database {
     }
 
     public User loginUser(String login, String password){
+        if (login == null || login.equals("")) {
+            System.out.println("You need to enter your username");
+            return null;
+        }
+        if (password == null || password.length() < 5){
+            System.out.println("The password is too short");
+            return null;
+        }
+        String hashPassword = new Util().getMD5(password);
+        String findUser = "Select * FROM user Where login LIKE ? and password LIKE ?";
+        try {
+            Connection con = getConnection();
+            if (con == null) {
+                System.out.println("Error! No connection");
+                return null;
+            }
+            PreparedStatement ps = con.prepareStatement(findUser);                                                         ;
+            ps.setString(1, login);
+            ps.setString(2, hashPassword);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                System.out.println("You are logged in to the chat");
+                int id = rs.getInt("id");
+                User user = new User(id, login, hashPassword);
+                con.close();
+                return user;
+            } else {
+                con.close();
+                System.out.println("Error! Invalid credentials");
+                return null;
+            }
 
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
         return null;
     }
 }
