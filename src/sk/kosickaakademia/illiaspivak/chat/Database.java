@@ -1,6 +1,7 @@
 package sk.kosickaakademia.illiaspivak.chat;
 
 import sk.kosickaakademia.illiaspivak.chat.connect.Connect;
+import sk.kosickaakademia.illiaspivak.chat.entity.User;
 import sk.kosickaakademia.illiaspivak.chat.util.Util;
 
 import java.sql.Connection;
@@ -9,6 +10,12 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class Database {
+    private Connection getConnection() throws ClassNotFoundException, SQLException {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection conn = DriverManager.getConnection(Connect.getUrl(),Connect.getUsername(),Connect.getPassword());
+        return conn;
+    }
+
     public void TestConnection(){
         try{
             Connection connection = getConnection();
@@ -16,11 +23,6 @@ public class Database {
         }catch(Exception e){
             e.printStackTrace();
         }
-    }
-    private Connection getConnection() throws ClassNotFoundException, SQLException {
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection conn = DriverManager.getConnection(Connect.getUrl(),Connect.getUsername(),Connect.getPassword());
-        return conn;
     }
 
     public boolean insertNewUser(String login, String password) {
@@ -56,5 +58,10 @@ public class Database {
         } catch (Exception ex) {
         }
         return true;
+    }
+
+    public User loginUser(String login, String password){
+
+        return null;
     }
 }
