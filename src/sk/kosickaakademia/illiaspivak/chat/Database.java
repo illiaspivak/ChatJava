@@ -155,8 +155,45 @@ public class Database {
         return -1;
     }
 
+    /**
+     * Sending a message
+     * @param from
+     * @param toUser
+     * @param text
+     * @return
+     */
     public boolean sendMessage(int from, String toUser, String text){
-
+        if(text==null || text.equals(""))
+            return false;
+        if(toUser==null || toUser.equals(""))
+            return false;
+        int to = getUserId(toUser);
+        if(to==-1)
+            return false;
+        String query = "INSERT INTO message(fromUser, toUser, text) VALUES(?, ?, ?)";
+        try {
+            Connection connection = getConnection();
+            if(connection ==null){
+                System.out.println("Error! No connection");
+                return false;
+            }
+            PreparedStatement ps = connection.prepareStatement(query);
+            ps.setInt(1,from);
+            ps.setInt(2, to);
+            ps.setString(3, text);
+            int result = ps.executeUpdate();
+            connection.close();
+            if(result<1){
+                System.out.println("Error! The message wasn't sent");
+                return false;
+            }
+            else{
+                System.out.println("The message was sent");
+                return true;
+            }
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
         return false;
     }
 

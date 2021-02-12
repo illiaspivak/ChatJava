@@ -22,10 +22,8 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         Database database = new Database();
-//        User user = database.loginUser(Information.getLogin(),Information.getPassword());
-//        database.TestConnection();
-//        database.insertNewUser(Information.getLogin(),Information.getPassword());
-        System.out.println(database.getUserId(Information.getLogin()));
+        String text = "test";
+        database.sendMessage(database.getUserId(Information.getLogin()),Information.getLogin(),text);
         launch(args);
     }
 }
