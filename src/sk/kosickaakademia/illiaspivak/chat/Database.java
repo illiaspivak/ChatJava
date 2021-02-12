@@ -103,7 +103,29 @@ public class Database {
     }
 
     public int getUserId(String login){
+        if (login == null || login.equals(""))
+            return -1;
+        String query = "Select id FROM user Where login LIKE ?";
+        try {
+            Connection connection = getConnection();
+            if (connection == null) {
+                System.out.println("Error! No connection");
+                return -1;
+            }
+            PreparedStatement ps = connection.prepareStatement(query);                                                         ;
+            ps.setString(1, login);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                int id = rs.getInt("id");
+                connection.close();
+                return id;
+            } else {
+                connection.close();
+                return -1;
+            }
 
+        } catch (Exception ex) {
+        }
         return -1;
     }
 
