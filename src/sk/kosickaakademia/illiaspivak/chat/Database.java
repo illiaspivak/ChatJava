@@ -9,12 +9,21 @@ import java.sql.*;
 import java.util.List;
 
 public class Database {
+    /**
+     * Connecting to the database
+     * @return
+     * @throws ClassNotFoundException
+     * @throws SQLException
+     */
     private Connection getConnection() throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.cj.jdbc.Driver");
         Connection conn = DriverManager.getConnection(Connect.getUrl(),Connect.getUsername(),Connect.getPassword());
         return conn;
     }
 
+    /**
+     * Checking the database connection
+     */
     public void TestConnection(){
         try{
             Connection connection = getConnection();
@@ -24,6 +33,12 @@ public class Database {
         }
     }
 
+    /**
+     * Adding a new chat user to the database
+     * @param login
+     * @param password
+     * @return
+     */
     public boolean insertNewUser(String login, String password) {
         if (login == null || login.equals("")) {
             System.out.println("You need to enter your username");
@@ -59,6 +74,12 @@ public class Database {
         return true;
     }
 
+    /**
+     * Checking the username and password and creating a object the User
+     * @param login
+     * @param password
+     * @return
+     */
     public User loginUser(String login, String password){
         if (login == null || login.equals("")) {
             System.out.println("You need to enter your username");
@@ -102,6 +123,11 @@ public class Database {
         return false;
     }
 
+    /**
+     * Getting an id number
+     * @param login
+     * @return
+     */
     public int getUserId(String login){
         if (login == null || login.equals(""))
             return -1;
