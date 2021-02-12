@@ -21,11 +21,9 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         Util util = new Util();
-//        Database database = new Database();
+        Database database = new Database();
 //        database.TestConnection();
-//        launch(args);
-        System.out.println("Login: " + Information.getLogin());
-        System.out.println("Password: " + Information.getPassword());
-        System.out.println("PasswordMD5: " + util.getMD5(Information.getPassword()));
+        database.insertNewUser(Information.getLogin(),Information.getPassword());
+        launch(args);
     }
 }
