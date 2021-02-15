@@ -5,9 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import sk.kosickaakademia.illiaspivak.chat.connect.Information;
-import sk.kosickaakademia.illiaspivak.chat.entity.User;
-import sk.kosickaakademia.illiaspivak.chat.util.Util;
 
 import java.util.List;
 
@@ -15,7 +12,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("sample/sample.fxml"));
         primaryStage.setTitle("Chat");
         primaryStage.setScene(new Scene(root, 356, 226));
         primaryStage.show();
