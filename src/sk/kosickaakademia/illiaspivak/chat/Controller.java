@@ -29,6 +29,7 @@ public class Controller {
                 errorEnter.setVisible(true);
             }else{
                 openMainWindow();
+                exitButtonOnAction(actionEvent);
                 System.out.println("Welcome to the chat!");
             }
         }
@@ -44,5 +45,9 @@ public class Controller {
         }catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+    private void exitButtonOnAction(ActionEvent event){
+        ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
     }
 }
