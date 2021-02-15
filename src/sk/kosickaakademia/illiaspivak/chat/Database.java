@@ -29,6 +29,7 @@ public class Database {
         try{
             Connection connection = getConnection();
             System.out.println("Success");
+            connection.close();
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -227,7 +228,7 @@ public class Database {
         }
         return false;
     }
-/*
+
     public List<Message> getMyMessages(String login) {
         if (login == null || login.equals(""))
             return null;
@@ -242,13 +243,22 @@ public class Database {
             }
             PreparedStatement ps = connection.prepareStatement(query);
             ps.setInt(1,to);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()) {
+                String fromUser = getLogin(rs.getInt("fromUser"));
+                String toUser = getLogin(rs.getInt("toUser"));
+                String text = rs.getString("text");
+                Message message = new Message(fromUser,toUser,text);
+                messages.add(message);
+            }
+            connection.close();
         }catch (Exception e){
             e.printStackTrace();
         }
         return messages;
     }
 
- */
+
 
     public void deleteAllMyMessages(String login){
 

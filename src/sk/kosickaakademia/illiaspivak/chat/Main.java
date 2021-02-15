@@ -5,6 +5,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import sk.kosickaakademia.illiaspivak.chat.connect.Information;
+import sk.kosickaakademia.illiaspivak.chat.entity.Message;
+
+import java.util.List;
 
 public class Main extends Application {
 
@@ -19,7 +23,10 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         Database database = new Database();
-        System.out.println(database.getLogin(6));
+        List<Message> messages = database.getMyMessages(Information.getLogin());
+        for (Message message : messages){
+            System.out.println(message.getFrom() + " " + message.getTo() + " " + message.getText());
+        }
         launch(args);
     }
 }
