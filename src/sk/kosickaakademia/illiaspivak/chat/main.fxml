@@ -8,7 +8,7 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="sk.kosickaakademia.illiaspivak.chat.mainwindow.Main"
-            prefHeight="400.0" prefWidth="600.0">
+            fx:controller="sk.kosickaakademia.illiaspivak.chat.ControllerMain"
+            prefHeight="500.0" prefWidth="500.0">
 
 </AnchorPane>
