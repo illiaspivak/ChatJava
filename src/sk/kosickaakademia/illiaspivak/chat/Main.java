@@ -22,7 +22,8 @@ public class Main extends Application {
 
 
     public static void main(String[] args) {
-//        Database database = new Database();
+        Database database = new Database();
+        database.changePassword(Information.getLogin(),Information.getPassword(),Information.getNewPassword());
 //        List<Message> messages = database.getMyMessages(Information.getLogin());
 //        for (Message message : messages){
 //            System.out.println(message.getFrom() + " " + message.getTo() + " " + message.getText());

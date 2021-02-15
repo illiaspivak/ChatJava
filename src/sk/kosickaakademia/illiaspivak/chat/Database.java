@@ -122,6 +122,43 @@ public class Database {
     }
 
     public boolean changePassword(String login , String oldPassword, String newPassword){
+        if (login == null || login.equals("")) {
+            System.out.println("You need to enter your username");
+            return false;
+        }
+        if (oldPassword == null || oldPassword.length() < 5){
+            System.out.println("The password is too short");
+            return false;
+        }
+        if (newPassword == null || newPassword.length() < 5){
+            System.out.println("The password is too short");
+            return false;
+        }
+        User user = loginUser(login,oldPassword);
+        String PasswordMD5Old = new Util().getMD5(oldPassword);
+        String PasswordMD5New = new Util().getMD5(newPassword);
+        if (!login.equals(user.getLogin())){
+            return false;
+        }
+        if (!PasswordMD5Old.equals(user.getPassword())){
+            return false;
+        }
+        String query = "UPDATE user SET password = ? WHERE login = ? AND password = ?";
+        try {
+            Connection connection = getConnection();
+            if (connection == null) {
+                System.out.println("Error! No connection");
+                return false;
+            }
+            PreparedStatement ps = connection.prepareStatement(query);
+            ps.setString(1, PasswordMD5New);
+            ps.setString(2, login);
+            ps.setString(3, PasswordMD5Old);
+            ps.executeUpdate();
+            System.out.println("Password changed");
+            return true;
+        } catch (Exception ex) {
+        }
         return false;
     }
 
