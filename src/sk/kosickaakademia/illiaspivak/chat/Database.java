@@ -258,8 +258,6 @@ public class Database {
         return messages;
     }
 
-
-
     public void deleteAllMyMessages(String login){
 
     }

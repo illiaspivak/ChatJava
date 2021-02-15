@@ -40,7 +40,7 @@ public class Controller {
             Stage newWindow = new Stage();
             Parent root = FXMLLoader.load(getClass().getResource("main.fxml"));
             newWindow.setTitle("Chat");
-            newWindow.setScene(new Scene(root, 500.0, 500.0));
+            newWindow.setScene(new Scene(root, 600.0, 500.0));
             newWindow.show();
         }catch (Exception e){
             e.printStackTrace();
