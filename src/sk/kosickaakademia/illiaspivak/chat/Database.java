@@ -157,6 +157,36 @@ public class Database {
     }
 
     /**
+     * Getting Login
+     * @param id
+     * @return
+     */
+    public String getLogin(int id){
+        String query = "Select login FROM user Where id LIKE ?";
+        try {
+            Connection connection = getConnection();
+            if (connection == null) {
+                System.out.println("Error! No connection");
+                return null;
+            }
+            PreparedStatement ps = connection.prepareStatement(query);                                                         ;
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                String login = rs.getString("login");
+                connection.close();
+                return login;
+            } else {
+                connection.close();
+                return null;
+            }
+
+        } catch (Exception ex) {
+        }
+        return null;
+    }
+
+    /**
      * Sending a message
      * @param from
      * @param toUser
@@ -197,11 +227,28 @@ public class Database {
         }
         return false;
     }
-
-    public List<Message> getMyMessages(String login){
-
-        return null;
+/*
+    public List<Message> getMyMessages(String login) {
+        if (login == null || login.equals(""))
+            return null;
+        int to = getUserId(login);
+        String query = "Select fromUser, toUser, text FROM message Where toUser LIKE ?";
+        ArrayList<Message> messages = new ArrayList<>();
+        try{
+            Connection connection = getConnection();
+            if(connection ==null){
+                System.out.println("Error! No connection");
+                return null;
+            }
+            PreparedStatement ps = connection.prepareStatement(query);
+            ps.setInt(1,to);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return messages;
     }
+
+ */
 
     public void deleteAllMyMessages(String login){
 

@@ -18,7 +18,8 @@ public class Main extends Application {
 
 
     public static void main(String[] args) {
-//        Database database = new Database();
+        Database database = new Database();
+        System.out.println(database.getLogin(6));
         launch(args);
     }
 }
