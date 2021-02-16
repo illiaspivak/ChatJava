@@ -5,10 +5,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import sk.kosickaakademia.illiaspivak.chat.entity.User;
 
 public class ControllerMain {
     public Button SingOut;
+    public Label userName;
+    private User user;
 
     public void LogOutOfTheChat(ActionEvent actionEvent) {
         openAuthorizationWindow();
@@ -30,4 +34,14 @@ public class ControllerMain {
     private void exitButtonOnAction(ActionEvent event){
         ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
     }
+
+    public void setUser(User user){
+        this.user=user;
+    }
+
+    public void initUserName() {
+        userName.setText(user.getLogin());
+    }
+
+    
 }

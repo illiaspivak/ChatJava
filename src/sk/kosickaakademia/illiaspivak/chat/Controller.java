@@ -28,20 +28,24 @@ public class Controller {
             if(user==null) {
                 errorEnter.setVisible(true);
             }else{
-                openMainWindow();
+                openMainWindow(user);
                 exitButtonOnAction(actionEvent);
                 System.out.println("Welcome to the chat!");
             }
         }
     }
 
-    private void openMainWindow(){
+    private void openMainWindow(User user){
         try  {
             Stage newWindow = new Stage();
-            Parent root = FXMLLoader.load(getClass().getResource("main.fxml"));
+            FXMLLoader root = new FXMLLoader();
+            root.setLocation(getClass().getResource("main.fxml"));
             newWindow.setTitle("Chat");
-            newWindow.setScene(new Scene(root, 600.0, 500.0));
+            newWindow.setScene(new Scene(root.load(), 600.0, 500.0));
             newWindow.show();
+            ControllerMain mc= root.getController();
+            mc.setUser(user);
+            mc.initUserName();
         }catch (Exception e){
             e.printStackTrace();
         }

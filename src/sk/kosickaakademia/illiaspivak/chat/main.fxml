@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sk.kosickaakademia.illiaspivak.chat.ControllerMain">
@@ -11,5 +12,15 @@
             <Font name="Arial Black" size="15.0" />
          </font>
       </Button>
+      <Label layoutX="50.0" layoutY="26.0" text="Welcome">
+         <font>
+            <Font name="Arial Black" size="15.0" />
+         </font></Label>
+      <Label fx:id="userName" layoutX="150.0" layoutY="26.0" text="ILYA">
+         <font>
+            <Font name="Arial Black" size="15.0" />
+         </font>
+      </Label>
+      <Line endX="154.0" layoutX="136.0" layoutY="49.0" startX="-100.0" stroke="#3c00ff" />
    </children>
 </Pane>

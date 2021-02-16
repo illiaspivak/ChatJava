@@ -127,7 +127,6 @@ public class Database {
             return false;
         }
         if (oldPassword == null || oldPassword.length() < 5){
-            System.out.println("The password is too short");
             return false;
         }
         if (newPassword == null || newPassword.length() < 5){
