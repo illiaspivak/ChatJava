@@ -225,17 +225,19 @@ public class Database {
 
     /**
      * Sending a message
-     * @param from
+     * @param fromUser
      * @param toUser
      * @param text
      * @return
      */
-    public boolean sendMessage(int from, String toUser, String text){
+
+    public boolean sendMessage(String fromUser, String toUser, String text){
         if(text==null || text.equals(""))
             return false;
         if(toUser==null || toUser.equals(""))
             return false;
         int to = getUserId(toUser);
+        int from = getUserId(fromUser);
         if(to==-1)
             return false;
         String query = "INSERT INTO message(fromUser, toUser, text) VALUES(?, ?, ?)";

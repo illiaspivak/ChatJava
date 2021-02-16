@@ -6,12 +6,17 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import sk.kosickaakademia.illiaspivak.chat.entity.User;
 
 public class ControllerMain {
     public Button SingOut;
     public Label userName;
+    public TextField messageTo;
+    public TextArea textMessage;
+    public Button buttonSend;
     private User user;
 
     public void LogOutOfTheChat(ActionEvent actionEvent) {
@@ -43,5 +48,12 @@ public class ControllerMain {
         userName.setText(user.getLogin());
     }
 
-    
+
+    public void sendMessage(ActionEvent actionEvent) {
+        Database database = new Database();
+        String fromUser = user.getLogin();
+        String toUser = messageTo.getText().trim();
+        String text = textMessage.getText().trim();
+        database.sendMessage(fromUser,toUser,text);
+    }
 }
