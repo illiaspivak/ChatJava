@@ -73,4 +73,7 @@ public class ControllerMain {
             viewMessages.getItems().add("------------------------------------");
         }
     }
+
+    public void ChangePassword(ActionEvent actionEvent) {
+    }
 }

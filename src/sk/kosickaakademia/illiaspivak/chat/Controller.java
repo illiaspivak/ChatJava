@@ -41,7 +41,7 @@ public class Controller {
             FXMLLoader root = new FXMLLoader();
             root.setLocation(getClass().getResource("main.fxml"));
             newWindow.setTitle("Chat");
-            newWindow.setScene(new Scene(root.load(), 600.0, 500.0));
+            newWindow.setScene(new Scene(root.load(), 500.0, 400.0));
             newWindow.show();
             ControllerMain mc= root.getController();
             mc.setUser(user);
