@@ -20,5 +20,6 @@
         <PasswordField fx:id="enterPassword" layoutX="142.0" layoutY="125.0" />
         <Button fx:id="buttonEnter" layoutX="216.0" layoutY="174.0" mnemonicParsing="false" onAction="#logInToTheChat" prefHeight="25.0" prefWidth="83.0" text="Enter" />
         <Label fx:id="errorEnter" layoutX="142.0" layoutY="157.0" prefHeight="17.0" prefWidth="32.0" text="Error!" textFill="RED" visible="false" />
+      <Button fx:id="newAccount" layoutX="43.0" layoutY="174.0" mnemonicParsing="false" onAction="#CreateAccount" prefHeight="25.0" prefWidth="123.0" text="Create account" />
     </children>
 </Pane>

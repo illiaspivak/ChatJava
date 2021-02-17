@@ -17,6 +17,7 @@ public class Controller {
     public PasswordField enterPassword;
     public Button buttonEnter;
     public Label errorEnter;
+    public Button newAccount;
 
     public void logInToTheChat(ActionEvent actionEvent) {
         System.out.println("Let's go");
@@ -53,5 +54,17 @@ public class Controller {
 
     private void exitButtonOnAction(ActionEvent event){
         ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
+    }
+
+    public void CreateAccount(ActionEvent actionEvent) {
+        try  {
+            Stage newWindow = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("additionalwindows/registration.fxml"));
+            newWindow.setTitle("Create account");
+            newWindow.setScene(new Scene(root, 303, 201));
+            newWindow.show();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }
