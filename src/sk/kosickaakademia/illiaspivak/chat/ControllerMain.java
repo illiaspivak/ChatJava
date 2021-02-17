@@ -70,10 +70,23 @@ public class ControllerMain {
             viewMessages.getItems().add(message.getDt());
             viewMessages.getItems().add(message.getFrom());
             viewMessages.getItems().add(message.getText());
-            viewMessages.getItems().add("------------------------------------");
+            viewMessages.getItems().add("--------------------------------------------------------------------------");
         }
     }
 
     public void ChangePassword(ActionEvent actionEvent) {
+        openChangePasswordWindow();
+    }
+
+    private void openChangePasswordWindow(){
+        try  {
+            Stage newWindow = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("additionalwindows/changePassword.fxml"));
+            newWindow.setTitle("Change Password");
+            newWindow.setScene(new Scene(root, 257, 264));
+            newWindow.show();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }
