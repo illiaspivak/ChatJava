@@ -9,11 +9,6 @@ public class Message {
     private Date dt;
     private String text;
 
-    public Message(String from, String to, String text) {
-        this.from = from;
-        this.to = to;
-        this.text = text;
-    }
 
     public Message(int id, String from, String to, Date dt, String text) {
         this.id = id;

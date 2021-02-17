@@ -67,8 +67,10 @@ public class ControllerMain {
             return;
         }
         for(Message message: messages){
+            viewMessages.getItems().add(message.getDt());
             viewMessages.getItems().add(message.getFrom());
             viewMessages.getItems().add(message.getText());
+            viewMessages.getItems().add("------------------------------------");
         }
     }
 }

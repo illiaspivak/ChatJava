@@ -7,6 +7,7 @@ import sk.kosickaakademia.illiaspivak.chat.util.Util;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Database {
@@ -271,7 +272,7 @@ public class Database {
         if (login == null || login.equals(""))
             return null;
         int to = getUserId(login);
-        String query = "Select fromUser, toUser, text FROM message Where toUser LIKE ?";
+        String query = "SELECT * FROM message Where toUser LIKE ?";
         ArrayList<Message> messages = new ArrayList<>();
         try{
             Connection connection = getConnection();
@@ -283,17 +284,19 @@ public class Database {
             ps.setInt(1,to);
             ResultSet rs = ps.executeQuery();
             while(rs.next()) {
+                int id = rs.getInt("id");
                 String fromUser = getLogin(rs.getInt("fromUser"));
                 String toUser = getLogin(rs.getInt("toUser"));
+                Date date = rs.getTime("dt");
                 String text = rs.getString("text");
-                Message message = new Message(fromUser,toUser,text);
+                Message message = new Message(id, fromUser, toUser, date, text);
                 messages.add(message);
             }
             connection.close();
         }catch (Exception e){
             e.printStackTrace();
         }
-        deleteAllMyMessages(login);
+//        deleteAllMyMessages(login);
         return messages;
     }
 
