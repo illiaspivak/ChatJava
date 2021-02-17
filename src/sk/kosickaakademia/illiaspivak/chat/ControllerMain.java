@@ -4,12 +4,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
+import sk.kosickaakademia.illiaspivak.chat.connect.Information;
+import sk.kosickaakademia.illiaspivak.chat.entity.Message;
 import sk.kosickaakademia.illiaspivak.chat.entity.User;
+
+import java.util.List;
 
 public class ControllerMain {
     public Button SingOut;
@@ -17,7 +18,11 @@ public class ControllerMain {
     public TextField messageTo;
     public TextArea textMessage;
     public Button buttonSend;
+    public ListView viewMessages;
+    public Button buttonView;
     private User user;
+
+    Database database = new Database();
 
     public void LogOutOfTheChat(ActionEvent actionEvent) {
         openAuthorizationWindow();
@@ -50,10 +55,20 @@ public class ControllerMain {
 
 
     public void sendMessage(ActionEvent actionEvent) {
-        Database database = new Database();
         String fromUser = user.getLogin();
         String toUser = messageTo.getText().trim();
         String text = textMessage.getText().trim();
         database.sendMessage(fromUser,toUser,text);
+    }
+
+    public void viewTheMessage(ActionEvent actionEvent) {
+        List<Message> messages = database.getMyMessages(Information.getLogin());
+        if(messages.isEmpty()){
+            return;
+        }
+        for(Message message: messages){
+            viewMessages.getItems().add(message.getFrom());
+            viewMessages.getItems().add(message.getText());
+        }
     }
 }
