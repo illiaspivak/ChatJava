@@ -293,10 +293,25 @@ public class Database {
         }catch (Exception e){
             e.printStackTrace();
         }
+        deleteAllMyMessages(login);
         return messages;
     }
 
     public void deleteAllMyMessages(String login){
+        String query = "DELETE FROM message WHERE toUser = ?";
+        int id = getUserId(login);
+        try {
+            Connection connection = getConnection();
+            PreparedStatement ps = connection.prepareStatement(query);
+            ps.setInt(1,id);
+            ps.executeUpdate();
+            if (connection == null) {
+                System.out.println("Error! No connection");
+                return;
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
 
     }
 
