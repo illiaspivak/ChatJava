@@ -1,6 +1,9 @@
 package sk.kosickaakademia.illiaspivak.chat;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -20,7 +23,9 @@ public class ControllerMain {
     public Button buttonSend;
     public ListView viewMessages;
     public Button buttonView;
+    public ComboBox selectARecipient;
     private User user;
+
 
     Database database = new Database();
 
@@ -88,5 +93,11 @@ public class ControllerMain {
         }catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    private void initialize() {
+
+        selectARecipient.getItems().setAll(database.getUsers());
     }
 }
