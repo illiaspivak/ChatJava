@@ -108,4 +108,40 @@ public class ControllerMain{
     public void deleteMessages(ActionEvent actionEvent) {
         database.deleteAllMyMessages(user.getLogin());
     }
+
+    public void getSmile(ActionEvent actionEvent) {
+        textMessage.appendText("\uD83D\uDE0A");
+    }
+
+    public void getHeart(ActionEvent actionEvent) {
+        textMessage.appendText("❤");
+    }
+
+    public void getLaughter(ActionEvent actionEvent) {
+        textMessage.appendText("\uD83D\uDE02");
+    }
+
+    public void getApproval(ActionEvent actionEvent) {
+        textMessage.appendText("\uD83D\uDE14");
+    }
+
+    public void getSadness(ActionEvent actionEvent) {
+        textMessage.appendText("\uD83D\uDC4D");
+    }
+
+    public void getSnowman(ActionEvent actionEvent) {
+        textMessage.appendText("⛄");
+    }
+
+    public void getCoffee(ActionEvent actionEvent) {
+        textMessage.appendText("☕");
+    }
+
+    public void getFire(ActionEvent actionEvent) {
+        textMessage.appendText("\uD83D\uDD25");
+    }
+
+    public void getPenguin(ActionEvent actionEvent) {
+        textMessage.appendText("\uD83D\uDC27");
+    }
 }

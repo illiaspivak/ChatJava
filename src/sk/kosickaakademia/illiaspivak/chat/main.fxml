@@ -35,5 +35,14 @@
       <ComboBox fx:id="selectARecipient" layoutX="151.0" layoutY="69.0" onAction="#SelectARecipient" prefWidth="150.0" promptText="Select" />
       <Button fx:id="changePassword" layoutX="385.0" layoutY="70.0" mnemonicParsing="false" onAction="#ChangePassword" text="Change password" textFill="#000dff" />
       <Button fx:id="delete" layoutX="440.0" layoutY="359.0" mnemonicParsing="false" onAction="#deleteMessages" text="Delete" textFill="RED" />
+      <Button fx:id="smile" layoutX="36.0" layoutY="200.0" mnemonicParsing="false" onAction="#getSmile" text="😊" />
+      <Button fx:id="heart" layoutX="67.0" layoutY="200.0" mnemonicParsing="false" onAction="#getHeart" text="❤" />
+      <Button fx:id="laughter" layoutX="98.0" layoutY="200.0" mnemonicParsing="false" onAction="#getLaughter" text="😂" />
+      <Button fx:id="approval" layoutX="160.0" layoutY="200.0" mnemonicParsing="false" onAction="#getApproval" text="👍" />
+      <Button fx:id="sadness" layoutX="129.0" layoutY="200.0" mnemonicParsing="false" onAction="#getSadness" text="😔" />
+      <Button fx:id="snowman" layoutX="191.0" layoutY="200.0" mnemonicParsing="false" onAction="#getSnowman" text="⛄" />
+      <Button fx:id="coffee" layoutX="222.0" layoutY="200.0" mnemonicParsing="false" onAction="#getCoffee" prefWidth="28.0" text="☕" />
+      <Button fx:id="fire" layoutX="253.0" layoutY="200.0" mnemonicParsing="false" onAction="#getFire" text="🔥" />
+      <Button fx:id="penguin" layoutX="284.0" layoutY="200.0" mnemonicParsing="false" onAction="#getPenguin" text="🐧" />
    </children>
 </Pane>
