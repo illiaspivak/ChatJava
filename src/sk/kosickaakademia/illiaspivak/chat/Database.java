@@ -296,7 +296,7 @@ public class Database {
         }catch (Exception e){
             e.printStackTrace();
         }
-//        deleteAllMyMessages(login);
+        System.out.println("The list of created");
         return messages;
     }
 
@@ -305,13 +305,15 @@ public class Database {
         int id = getUserId(login);
         try {
             Connection connection = getConnection();
-            PreparedStatement ps = connection.prepareStatement(query);
-            ps.setInt(1,id);
-            ps.executeUpdate();
             if (connection == null) {
                 System.out.println("Error! No connection");
                 return;
             }
+            PreparedStatement ps = connection.prepareStatement(query);
+            ps.setInt(1,id);
+            ps.executeUpdate();
+            System.out.println("Messages deleted");
+
         } catch (Exception ex) {
             ex.printStackTrace();
         }

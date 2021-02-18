@@ -68,7 +68,7 @@ public class ControllerMain{
     }
 
     public void viewTheMessage(ActionEvent actionEvent) {
-        List<Message> messages = database.getMyMessages(Information.getLogin());
+        List<Message> messages = database.getMyMessages(user.getLogin());
         if(messages.isEmpty()){
             return;
         }
@@ -103,5 +103,9 @@ public class ControllerMain{
 
     public void SelectARecipient(ActionEvent actionEvent) {
         messageTo.setText((String) selectARecipient.getValue());
+    }
+
+    public void deleteMessages(ActionEvent actionEvent) {
+        database.deleteAllMyMessages(user.getLogin());
     }
 }
