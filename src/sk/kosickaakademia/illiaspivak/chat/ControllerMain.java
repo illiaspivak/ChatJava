@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -15,7 +16,7 @@ import sk.kosickaakademia.illiaspivak.chat.entity.User;
 
 import java.util.List;
 
-public class ControllerMain {
+public class ControllerMain{
     public Button SingOut;
     public Label userName;
     public TextField messageTo;
@@ -97,7 +98,10 @@ public class ControllerMain {
 
     @FXML
     private void initialize() {
-
         selectARecipient.getItems().setAll(database.getUsers());
+    }
+
+    public void SelectARecipient(ActionEvent actionEvent) {
+        messageTo.setText((String) selectARecipient.getValue());
     }
 }
