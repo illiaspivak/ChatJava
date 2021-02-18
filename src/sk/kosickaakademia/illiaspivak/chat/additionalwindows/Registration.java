@@ -23,13 +23,14 @@ public class Registration {
         String pass2 = password2.getText().trim();
         if(pass1!=pass2){
             error.setVisible(true);
-        }
-        if(username.length()>0 && pass1.length()>0){
-            Database database = new Database();
-            database.insertNewUser(username,pass1);
-            exitButtonOnAction(actionEvent);
-        }else{
-            enterLogin.setVisible(true);
+        }else {
+            if (username.length() > 0 && pass1.length() > 0) {
+                Database database = new Database();
+                database.insertNewUser(username, pass1);
+                exitButtonOnAction(actionEvent);
+            } else {
+                enterLogin.setVisible(true);
+            }
         }
     }
 
